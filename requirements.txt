@@ -2,7 +2,9 @@ fastapi
 uvicorn[standard]
 python-multipart
 opencv-python
-face_recognition
-deepface
 numpy
 pydantic
+insightface
+onnxruntime
+pdf2image
+easyocr

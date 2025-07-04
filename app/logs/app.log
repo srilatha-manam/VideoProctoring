@@ -1,0 +1,206 @@
+2025-07-04 17:10:39,534 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 63, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 104, in match_with_idproof
+    id_embedding = extract_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 55, in extract_embedding
+    raise ProctoringException("Multiple faces detected. Only one allowed.", 422)
+app.exceptions.base.ProctoringException: Multiple faces detected. Only one allowed.
+2025-07-04 17:10:39,548 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 17:11:22,692 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 63, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 104, in match_with_idproof
+    id_embedding = extract_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 53, in extract_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 17:11:22,746 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 17:17:17,583 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 65, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 104, in match_with_idproof
+    id_embedding = extract_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 53, in extract_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 17:17:17,586 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 17:19:33,548 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 65, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 105, in match_with_idproof
+    id_embedding = extract_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 53, in extract_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 17:19:33,550 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 17:21:57,503 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 65, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 106, in match_with_idproof
+    id_embedding = extract_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 53, in extract_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 17:21:57,503 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 17:23:24,817 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 65, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 106, in match_with_idproof
+    id_embedding = extract_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 55, in extract_embedding
+    raise ProctoringException("Multiple faces detected. Only one allowed.", 422)
+app.exceptions.base.ProctoringException: Multiple faces detected. Only one allowed.
+2025-07-04 17:23:24,819 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 18:22:18,770 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 65, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 110, in match_with_idproof
+    id_embedding = extract_largest_face_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 142, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:22:18,801 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 18:34:42,407 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:34:42,409 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 70, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 110, in match_with_idproof
+    id_embedding = extract_largest_face_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:34:42,411 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 18:38:38,810 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:38:38,815 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 70, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 110, in match_with_idproof
+    id_embedding = extract_largest_face_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:38:38,817 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 18:42:10,224 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:42:10,226 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 70, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 110, in match_with_idproof
+    id_embedding = extract_largest_face_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:42:10,226 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 18:46:57,647 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:46:57,649 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 74, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 110, in match_with_idproof
+    id_embedding = extract_largest_face_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:46:57,653 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 18:49:26,404 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:49:26,404 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 75, in verify_with_id
+    result = match_with_idproof(live, idb)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 110, in match_with_idproof
+    id_embedding = extract_largest_face_embedding(id_bytes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 18:49:26,404 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 18:59:10,882 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 61, in verify_with_id
+    open_cv_image = np.array(pil_image)
+                    ^^
+NameError: name 'np' is not defined
+2025-07-04 18:59:10,882 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-04 19:00:34,260 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 19:00:34,265 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-04 19:04:32,068 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 19:04:32,070 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-04 19:11:15,080 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 19:11:15,082 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-04 19:13:36,454 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 19:13:36,457 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-04 19:15:31,057 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-04 19:15:31,060 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
