@@ -204,3 +204,54 @@ Traceback (most recent call last):
     raise ProctoringException("No face found in image", 422)
 app.exceptions.base.ProctoringException: No face found in image
 2025-07-04 19:15:31,060 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-07 10:28:51,384 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 146, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-07 10:28:51,386 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-07 10:40:33,531 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 148, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-07 10:40:33,532 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-07 10:45:47,410 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 151, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-07 10:45:47,411 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-07 10:50:47,810 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 153, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-07 10:50:47,811 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-07 10:54:10,795 — proctoring — ERROR — Error in extracting face embedding
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\services\liveface_matching.py", line 153, in extract_largest_face_embedding
+    raise ProctoringException("No face found in image", 422)
+app.exceptions.base.ProctoringException: No face found in image
+2025-07-07 10:54:10,796 — proctoring — ERROR — /identity/verify-with-idproof — 422 — No face found in image
+2025-07-07 12:05:40,559 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 69, in verify_with_id
+    result = match_with_idproof(preprocess_live, preprocess_idb)
+                                                 ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'preprocess_idb' where it is not associated with a value
+2025-07-07 12:05:40,586 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-07 12:06:23,042 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 69, in verify_with_id
+    result = match_with_idproof(preprocess_live, preprocess_idb)
+                                                 ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'preprocess_idb' where it is not associated with a value
+2025-07-07 12:06:23,043 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-07 12:06:53,045 — proctoring — ERROR — ID proof processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\videoproctoring\app\apis\identity_verification.py", line 69, in verify_with_id
+    result = match_with_idproof(preprocess_live, preprocess_idb)
+                                ^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'preprocess_idb' where it is not associated with a value
+2025-07-07 12:06:53,045 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof

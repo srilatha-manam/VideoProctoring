@@ -6,6 +6,7 @@ from app.exceptions.base import ProctoringException
 from app.config import logger
 import base64
 import easyocr
+from pdf2image import convert_from_bytes
 
 # Load face analysis once globally
 face_app = FaceAnalysis(name="buffalo_l", providers=['CPUExecutionProvider'])
@@ -49,9 +50,9 @@ def extract_embedding(image_bytes: bytes):
     # Convert the image bytes to a numpy array
     nparr = np.frombuffer(image_bytes, np.uint8)
     # Decode the numpy array into an image
-    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    # Use the face application to detect faces in the image
-    faces = face_app.get(img)
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)    
+    # Use the face application to detect faces in the imageS
+    faces = face_app.get(img)    
     if not faces:
         raise ProctoringException("No face found in image", 422)
     if len(faces) > 1:
@@ -102,21 +103,18 @@ def match_with_databaseimages(live_bytes: bytes):  #need to modify this once the
 
 def match_with_idproof(live_bytes: bytes, id_bytes: bytes):
     # Try to extract embeddings from live and id bytes
-    try:
+    try:        
         logger.info("Extracting embedding from live image")
-        live_embedding = extract_largest_face_embedding(live_bytes)
-
+        live_embedding = extract_largest_face_embedding(live_bytes)        
         logger.info("Extracting embedding from ID proof")
         id_embedding = extract_largest_face_embedding(id_bytes)
-
         # Calculate the similarity score between the two embeddings
         sim = np.dot(live_embedding, id_embedding) / (
             np.linalg.norm(live_embedding) * np.linalg.norm(id_embedding)
         )
-        matched = bool(sim >= 0.3)  # Adjustable threshold
-
+        matched = bool(sim >= 0.3)  # Adjustable threshold        
         # Extract text from the ID proof
-        extracted_text = extract_text_from_id(id_bytes)
+        extracted_text = extract_text_from_id(id_bytes)      
 
         # Return a dictionary containing the success status, similarity score, message, and extracted text
         return {
@@ -133,15 +131,12 @@ def match_with_idproof(live_bytes: bytes, id_bytes: bytes):
         logger.exception("ID proof verification failed")
         raise ProctoringException("Internal server error during ID verification", 500)
 def extract_largest_face_embedding(image_bytes: bytes):
-    try:
-        nparr = np.frombuffer(image_bytes, np.uint8)
-        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
+    try:        
+        nparr = np.frombuffer(image_bytes, np.uint8)        
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)       
         if img is None:
-            raise ProctoringException("Failed to decode image from bytes", 422)
-
-        faces = face_app.get(img)
-
+            raise ProctoringException("Failed to decode image from bytes", 422)        
+        faces = face_app.get(img)        
         if not faces:
             raise ProctoringException("No face found in image", 422)
 
@@ -153,10 +148,79 @@ def extract_largest_face_embedding(image_bytes: bytes):
         raise
 
 def extract_text_from_id(image_bytes: bytes):
+    # Convert the image bytes to a numpy array
     nparr = np.frombuffer(image_bytes, np.uint8)
+    # Decode the numpy array into an image
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    results = ocr_reader.readtext(img)
-    print("extracted text",results)
+    # Use the OCR reader to read the text from the image
+    results = ocr_reader.readtext(img)   
+    # Join the extracted text into a single string
     extracted_text = " ".join([text[1] for text in results])
+    # Return the extracted text
     return extracted_text
 
+def convert_pdf_to_face_image_bytes(pdf_bytes: bytes) -> bytes:
+    # Convert PDF bytes to images
+    images = convert_from_bytes(pdf_bytes, dpi=300)
+    if not images:
+        raise ProctoringException("No image found in PDF", 400)
+
+    # Convert first page to OpenCV
+    pil_image = images[0].convert("RGB")
+    open_cv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
+
+    # Optional: Rotate if landscape
+    if open_cv_image.shape[1] > open_cv_image.shape[0]:
+        open_cv_image = cv2.rotate(open_cv_image, cv2.ROTATE_90_CLOCKWISE)
+
+    # Resize large images
+    max_dim = 1000
+    h, w = open_cv_image.shape[:2]
+    if max(h, w) > max_dim:
+        scale = max_dim / float(max(h, w))
+        open_cv_image = cv2.resize(open_cv_image, None, fx=scale, fy=scale)
+
+    # Enhance contrast
+    open_cv_image = cv2.convertScaleAbs(open_cv_image, alpha=1.3, beta=30)
+    # debug face detection before converting
+    faces = face_app.get(open_cv_image)
+    logger.info(f"[convert_pdf_to_face_image_bytes] Faces detected in PDF image: {len(faces)}")
+    if not faces:
+        raise ProctoringException("No face detected in ID proof (converted from PDF)", 422)
+
+    # Encode to JPEG bytes
+    success, encoded_img = cv2.imencode(".jpg", open_cv_image)
+    if not success:
+        raise ProctoringException("Failed to encode image from PDF", 500)
+
+    return encoded_img.tobytes()
+
+def preprocess_image_bytes(image_bytes: bytes) -> bytes:
+    # Convert bytes to numpy array
+    nparr = np.frombuffer(image_bytes, np.uint8)
+    # Decode the image
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+
+    # Raise an exception if the image fails to decode
+    if img is None:
+        raise ProctoringException("Failed to decode image", 422)
+
+    # Rotate if in landscape
+    if img.shape[1] > img.shape[0]:
+        img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+
+    # Resize large images
+    max_dim = 1000
+    h, w = img.shape[:2]
+    if max(h, w) > max_dim:
+        scale = max_dim / float(max(h, w))
+        img = cv2.resize(img, None, fx=scale, fy=scale)
+
+    # Enhance contrast
+    img = cv2.convertScaleAbs(img, alpha=1.3, beta=30)
+
+    # Encode back to bytes
+    success, encoded_img = cv2.imencode(".jpg", img)
+    if not success:
+        raise ProctoringException("Failed to encode preprocessed image", 500)
+    return encoded_img.tobytes()
