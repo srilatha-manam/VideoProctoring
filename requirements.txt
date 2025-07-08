@@ -8,3 +8,6 @@ insightface
 onnxruntime
 pdf2image
 easyocr
+webrtcvad          
+pydub              
+moviepy            

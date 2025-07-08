@@ -255,3 +255,15 @@ Traceback (most recent call last):
                                 ^^^^^^^^^^^^^^^
 UnboundLocalError: cannot access local variable 'preprocess_idb' where it is not associated with a value
 2025-07-07 12:06:53,045 — proctoring — ERROR — /identity/verify-with-idproof — 500 — Failed to verify ID proof
+2025-07-08 15:36:41,549 — proctoring — ERROR — VAD processing failed
+Traceback (most recent call last):
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\VideoProctoring\app\apis\voice_activity_detection.py", line 15, in background_conversations_from_video
+    result = extract_audio(video_bytes, video_file.filename)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\VideoProctoring\app\services\background_audio.py", line 57, in extract_audio
+    return analyze_background_audio(wav_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Srilatha\Desktop\Video_Proctoring\VideoProctoring\app\services\background_audio.py", line 30, in analyze_background_audio
+    raise Exception("Audio must be mono and 16kHz")
+Exception: Audio must be mono and 16kHz
+2025-07-08 15:36:41,638 — proctoring — ERROR — /audio-proctoring/background_conversations — 500 — Failed to process video for VAD
