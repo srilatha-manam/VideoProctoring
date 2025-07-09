@@ -8,3 +8,11 @@ insightface
 onnxruntime
 pdf2image
 easyocr
+webrtcvad          
+pydub              
+moviepy
+python-dotenv
+torch
+torchaudio
+resemblyzer
+          
