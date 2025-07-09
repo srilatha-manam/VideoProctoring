@@ -1,20 +1,26 @@
-from fastapi import APIRouter, UploadFile, File
-from app.services.background_audio import extract_audio
-from app.exceptions.base import ProctoringException
-from app.config import logger
 
-router = APIRouter(prefix="/audio-proctoring", tags=["Audio Proctoring"])
 
-@router.post("/background_conversations")
-async def background_conversations_from_video(video_file: UploadFile = File(...)):
-    if not video_file:
-        raise ProctoringException("No video file provided", 400)
+from fastapi import APIRouter, WebSocket
+from app.services.audio_analysis_service  import analyze_audio_chunk
 
+router = APIRouter(prefix="/audio-analysis", tags=["Audio Proctoring"])
+
+@router.websocket("/ws/audio")
+async def audio_ws(websocket: WebSocket):    
+    await websocket.accept()
+    print("WebSocket connected")
+
+    buffer = bytearray()
     try:
-        video_bytes = await video_file.read()
-        result = extract_audio(video_bytes, video_file.filename)
-        return result
+        while True:
+            chunk = await websocket.receive_bytes()
+            buffer.extend(chunk)
+
+            if len(buffer) >= 160000:  
+                result = await analyze_audio_chunk(buffer)
+                await websocket.send_json(result)
+                buffer.clear()
 
     except Exception as e:
-        logger.exception("VAD processing failed")
-        raise ProctoringException("Failed to process video for VAD", 500)
+        print(f"WebSocket error: {e}")
+        await websocket.close()
