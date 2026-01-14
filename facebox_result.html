@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Face Detection Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 5px 15px;
+      font-size: 16px;
+    }
+    img {
+      max-width: 100%;
+      border: 2px solid #000;
+      margin-top: 15px;
+    }
+    .info {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Upload Image for Face Detection</h2>
+
+  <input type="file" id="imageInput" accept="image/*" />
+  <button onclick="uploadImage()">Detect Face</button>
+
+  <div class="info">
+    <p><strong>Faces Detected:</strong> <span id="face-count">-</span></p>
+    <p><strong>Locations:</strong> <span id="face-locations">-</span></p>
+  </div>
+
+  <img id="detected-image" alt="Detected Face with Box" />
+
+  <script>
+    async function uploadImage() {
+      const input = document.getElementById("imageInput");
+      if (input.files.length === 0) {
+        alert("Please select an image file.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("image", input.files[0]); // MUST match FastAPI param name
+
+      try {
+        console.log("Sending image to backend...");
+        const response = await fetch("http://127.0.0.1:8000/identity/detect-face", {
+          method: "POST",
+          body: formData
+        });
+
+        console.log("Response status:", response.status);
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Server error: ${response.status} ${errorText}`);
+        }
+
+        const data = await response.json();
+        console.log("Response data:", data);
+
+        document.getElementById("face-count").textContent = data.faces_detected;
+        document.getElementById("face-locations").textContent = JSON.stringify(data.locations);
+        document.getElementById("detected-image").src = "data:image/jpeg;base64," + data.image_with_box;
+
+      } catch (error) {
+        console.error("Error occurred:", error);
+        alert("Failed to detect face. See browser console for details.");
+      }
+    }
+  </script>
+
+</body>
+</html>
